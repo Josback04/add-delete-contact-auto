@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Liste des Contacts</h1>
+    <ul>
+        {% for contact in contacts %}
+        <li>{{ contact.names[0].displayName }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/delete_last_50">Supprimer les 50 derniers contacts</a>
+</body>
+</html>

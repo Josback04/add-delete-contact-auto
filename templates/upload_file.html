@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Contacts</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        form { margin-top: 20px; }
+        input[type="file"] { margin: 10px 0; }
+        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+    <h1>Importer un fichier Excel</h1>
+    <p>Sélectionnez un fichier contenant vos contacts :</p>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xlsx,.xls" required>
+        <br>
+        <button type="submit">Envoyer</button>
+    </form>
+</body>
+</html>
