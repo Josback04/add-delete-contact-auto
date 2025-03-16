@@ -26,8 +26,41 @@ def create_contact(service, contact):
     """Crée un contact dans Google Contacts."""
     service.people().createContact(body={
         "names": [{"givenName": contact['firstname']}],
-        "phoneNumbers": [{"value": contact['phone']}],
+"emailAddresses": [{"value": contact['email']}],        "phoneNumbers": [{"value": contact['phone']}],
     }).execute()
+
+# def updata_contact(service, firstname, new_phone):
+#     results=service.people().connections().list(
+#         ressourceName="people/me"
+#         personFields="names,phoneNumbers"
+#     ).execute()
+
+#     contacts=results.get('connections', [])
+
+#     for contact in contacts:
+#         names=contact.get('names', [])
+#         phoneNumbers= contact.get('phoneNumbers', [])
+
+#         if names:
+#             contact_name=names[0].get("displayName", "")
+           
+
+#             if contact_name == firstname:
+#                 contact_id=contact["resourceName"]
+
+#                 #mise a jour
+
+#                 updated_contact= {
+
+#                     "phoneNumbers": [{"value":new_phone}]
+#                 }
+
+#                 service.people().updateContact(
+#                     ressourceName=contact_id,updatePersonFields="phoneNumbers",body=update_body).execute()
+                
+#                 print(f"Numéro mis à jour pour : {firstname} -> {new_phone}")
+#                 return
+#     print(f"contact {firstname} non trouvé")
 
 def main():
     """Programme principal."""
@@ -38,22 +71,15 @@ def main():
  
 
     contacts = [
+        
 
 
-     
-        {"firstname": "3", "phone": "+243849433451"},
-        {"firstname": "4", "phone": "+243992700262"},
-        {"firstname": "3", "phone": "+243981660546"},
-        {"firstname": "3", "phone": "+243990175228"},
-        {"firstname": "3", "phone": "+243818356994"},
-        {"firstname": "3", "phone": "+243985166362"},
-        {"firstname": "3", "phone": "+243837903056"},
-        {"firstname": "3", "phone": "+243972848956"},
-        {"firstname": "3", "phone": "+243814731569"},
-        {"firstname": "3", "phone": "+243830351770"},
+    {"firstname": "400. Bvnd", "email": "bonandombasi@gmail.com", "phone": "0819639862"},
 
-       
-    ]
+
+
+
+]
 
     for contact in contacts:
         create_contact(service, contact)
