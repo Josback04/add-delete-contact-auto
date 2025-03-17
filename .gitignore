@@ -1,2 +1,7 @@
 token.json
 credentials.json
+.env
+.venv/
+node_modules/
+package-lock.json
+package.json
