@@ -5,3 +5,7 @@ credentials.json
 node_modules/
 package-lock.json
 package.json
+.DS_Store
+credentials.json
+credentials_script.json
+credentials.json

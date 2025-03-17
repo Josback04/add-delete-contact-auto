@@ -50,7 +50,7 @@ def main():
     else:
         contacts.reverse()
         
-        for contact in contacts[:50]:
+        for contact in contacts[:95]:
             contact_id = contact['resourceName']
             delete_contact(service, contact_id)
 
