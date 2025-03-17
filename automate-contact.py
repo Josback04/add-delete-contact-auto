@@ -17,7 +17,7 @@ def authenticate():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file('credentials_script.json', SCOPES)
             creds = flow.run_local_server(port=0)
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
@@ -28,7 +28,7 @@ def create_contact(service, contact):
     service.people().createContact(body={
         "names": [{"givenName": contact['firstname']}],
         "phoneNumbers": [{"value": contact['phone']}],
-        "emailAddresses": [{"value": contact['email']}],
+        # "emailAddresses": [{"value": contact['email']}],
     }).execute()
 
 def import_contacts_from_excel(filepath):
@@ -41,16 +41,16 @@ def import_contacts_from_excel(filepath):
 
 
     contacts = []
-    for index, row in df.iterrows():
+    for _, row in df.iterrows():
         contacts.append({
-            "firstname": f"{index + 1}. {row['Nom']}",
+            "firstname": str(row['Nom']),
             "phone": str(row["Téléphone"]),
-            "email": str(row["E-mail"]),
+            # "email": str(row["E-mail"]),
         })
 
     for contact in contacts:
         create_contact(service, contact)
-        print(f"Contact ajouté : {contact['firstname']} - {contact['email']}")
+        print(f"Contact ajouté : {contact['firstname']}")
 
 if __name__ == '__main__':
-    import_contacts_from_excel("/Users/josback/Downloads/copa_chancel.xlsx")
+    import_contacts_from_excel("'/Users/josback/Downloads/CONTACTS 18.03.13H.xlsx'")
