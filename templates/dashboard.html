@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord</title>
 </head>
 <body>
-    <h1>Liste des Contacts</h1>
-    <ul>
-        {% for contact in contacts %}
-        <li>{{ contact.names[0].displayName }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/delete_last_50">Supprimer les 50 derniers contacts</a>
+    <h2>Importer un fichier Excel</h2>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Importer</button>
+    </form>
 </body>
 </html>
